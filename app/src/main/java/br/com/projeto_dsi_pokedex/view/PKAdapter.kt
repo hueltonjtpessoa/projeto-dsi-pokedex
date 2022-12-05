@@ -39,7 +39,7 @@ class PKAdapter(
 
             // TODO: Carregar imagem com o Glide
 
-            textViewNumero.text = "Nº ${item.numero}"
+            textViewNumero.text = "Nº ${item.numeroFormatado}"
             textViewNome.text = item.nome
             textViewTipo1.text = item.tipos[0].nome
 

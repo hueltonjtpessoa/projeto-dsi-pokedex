@@ -6,5 +6,7 @@ data class Pokemon(
     val numero: Int,
     val tipos: List<TipoPokemon>
 
-)
+){
+    val numeroFormatado = numero.toString().padStart(3, '0')
+}
 
