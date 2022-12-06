@@ -29,6 +29,7 @@ object Repositorio {
 
             override fun onFailure(call: Call<ResultadoApi>, t: Throwable) {
                 Log.d("POKEMON_API","Erro ao carregar")
+                //Hello world !
             }
         })
     }
