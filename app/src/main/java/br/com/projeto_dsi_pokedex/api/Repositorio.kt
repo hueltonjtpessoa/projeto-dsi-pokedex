@@ -19,19 +19,29 @@ object Repositorio {
         service = retrofit.create(Service::class.java)
     }
 
-    fun listPokemons(limit: Int = 151) {
+    fun listPokemons(limit: Int = 151): ResultadoApi? {
         val call = service.listaPokemons(limit)
 
+        return call.execute().body()
+        /*
         call.enqueue(object : Callback<ResultadoApi>{
             override fun onResponse(call: Call<ResultadoApi>, response: Response<ResultadoApi>) {
-                Log.e("POKEMON_API", "Pokemos listados")
+                if (response.isSuccessful) {
+                    val body = response.body()
+
+                    body?.results?.let {
+                        Log.d("POKEMON_LISTA", it[0].name)
+                    }
+                }
+                Log.e("POKEMON_LISTA", "Pokemos listados")
             }
 
             override fun onFailure(call: Call<ResultadoApi>, t: Throwable) {
-                Log.d("POKEMON_API","Erro ao carregar")
-                //Hello world !
+                Log.d("POKEMON_LISTA","Erro ao carregar")
+
             }
         })
+        */
     }
 
 }

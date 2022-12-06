@@ -2,6 +2,7 @@ package br.com.projeto_dsi_pokedex.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import androidx.constraintlayout.helper.widget.Carousel.Adapter
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -27,8 +28,20 @@ class MainActivity : AppCompatActivity() {
         )
         val pokemons = listOf(charmander, charmander, charmander, charmander, charmander)
 
-        val pokemonsApi = Repositorio.listPokemons()
+        Thread(Runnable {
+            val pokemonsApi = Repositorio.listPokemons()
 
+            Log.d("POKEMON_LISTA", pokemonsApi.toString())
+        }).start()
+
+
+        metodoPokemons(recyclerView, pokemons)
+    }
+
+    private fun metodoPokemons(
+        recyclerView: RecyclerView,
+        pokemons: List<Pokemon>
+    ) {
         val layoutManager = LinearLayoutManager(this)
         recyclerView.layoutManager = layoutManager
         recyclerView.adapter = PKAdapter(pokemons)
