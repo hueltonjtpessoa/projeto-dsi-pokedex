@@ -41,6 +41,7 @@ class PKAdapter(
 
             textViewNumero.text = "Nº ${item.numeroFormatado}"
             textViewNome.text = item.nome
+            /*
             textViewTipo1.text = item.tipos[0].nome
 
             if(item.tipos.size > 1){
@@ -49,6 +50,8 @@ class PKAdapter(
             }else {
                 textViewTipo2.visibility = View.GONE
             }
+
+             */
         }
     }
 }

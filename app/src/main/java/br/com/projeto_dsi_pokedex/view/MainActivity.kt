@@ -12,12 +12,15 @@ import br.com.projeto_dsi_pokedex.dados.Pokemon
 import br.com.projeto_dsi_pokedex.dados.TipoPokemon
 
 class MainActivity : AppCompatActivity() {
+    lateinit var recyclerView: RecyclerView
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
+        recyclerView = findViewById(R.id.recyclerView)
 
+        /*
         val charmander = Pokemon(
             "https://assets.pokemon.com/assets/cms2/img/pokedex/full/004.png",
             "Charmander",
@@ -26,24 +29,29 @@ class MainActivity : AppCompatActivity() {
                 TipoPokemon("Fogo")
             )
         )
+
         val pokemons = listOf(charmander, charmander, charmander, charmander, charmander)
+        */
 
         Thread(Runnable {
-            val pokemonsApi = Repositorio.listPokemons()
-
-            Log.d("POKEMON_LISTA", pokemonsApi.toString())
+            metodoPokemons()
         }).start()
 
 
-        metodoPokemons(recyclerView, pokemons)
     }
 
-    private fun metodoPokemons(
-        recyclerView: RecyclerView,
-        pokemons: List<Pokemon>
-    ) {
-        val layoutManager = LinearLayoutManager(this)
-        recyclerView.layoutManager = layoutManager
-        recyclerView.adapter = PKAdapter(pokemons)
+    private fun metodoPokemons() {
+        val pokemonsResultado = Repositorio.listPokemons()
+
+        pokemonsResultado?.results?.let {
+            val layoutManager = LinearLayoutManager(this)
+            recyclerView.post {
+                recyclerView.layoutManager = layoutManager
+                recyclerView.adapter = PKAdapter(it)
+            }
+
+        }
+
+
     }
 }
