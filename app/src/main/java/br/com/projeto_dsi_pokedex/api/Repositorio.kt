@@ -23,25 +23,14 @@ object Repositorio {
         val call = service.listaPokemons(limit)
 
         return call.execute().body()
-        /*
-        call.enqueue(object : Callback<ResultadoApi>{
-            override fun onResponse(call: Call<ResultadoApi>, response: Response<ResultadoApi>) {
-                if (response.isSuccessful) {
-                    val body = response.body()
 
-                    body?.results?.let {
-                        Log.d("POKEMON_LISTA", it[0].name)
-                    }
-                }
-                Log.e("POKEMON_LISTA", "Pokemos listados")
-            }
+    }
 
-            override fun onFailure(call: Call<ResultadoApi>, t: Throwable) {
-                Log.d("POKEMON_LISTA","Erro ao carregar")
+    fun getPokemon(number:Int): PokemonApiResultado? {
+        val call = service.getPokemon(number)
 
-            }
-        })
-        */
+        return call.execute().body()
+
     }
 
 }
