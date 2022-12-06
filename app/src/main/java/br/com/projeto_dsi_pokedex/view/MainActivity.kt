@@ -6,6 +6,7 @@ import androidx.constraintlayout.helper.widget.Carousel.Adapter
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import br.com.projeto_dsi_pokedex.R
+import br.com.projeto_dsi_pokedex.api.Repositorio
 import br.com.projeto_dsi_pokedex.dados.Pokemon
 import br.com.projeto_dsi_pokedex.dados.TipoPokemon
 
@@ -25,6 +26,8 @@ class MainActivity : AppCompatActivity() {
             )
         )
         val pokemons = listOf(charmander, charmander, charmander, charmander, charmander)
+
+        val pokemonsApi = Repositorio.listPokemons()
 
         val layoutManager = LinearLayoutManager(this)
         recyclerView.layoutManager = layoutManager
