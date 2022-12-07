@@ -8,7 +8,7 @@ import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface Service {
-
+// Métodos para acessar a API
     @GET("pokemon")
     fun listaPokemons(@Query("limit")limit: Int): Call<ResultadoApi>
 

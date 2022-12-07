@@ -10,7 +10,7 @@ import br.com.projeto_dsi_pokedex.R
 import br.com.projeto_dsi_pokedex.dados.Pokemon
 import com.bumptech.glide.Glide
 
-
+// Classe Adapter com os métodos implementados
 class PKAdapter(
     private val items: List<Pokemon>
 ) : RecyclerView.Adapter<PKAdapter.ViewHolder>() {
@@ -46,6 +46,8 @@ class PKAdapter(
                 textViewNumero.text = "Nº ${item.numeroFormatado}"
                 textViewNome.text = item.name
                 textViewTipo1.text = item.types!![0].name
+
+                // If checando se o Pokemon tem mais de um Tipo
 
                 if(item.types.size > 1){
                     textViewTipo2.visibility = View.VISIBLE

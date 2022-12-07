@@ -8,7 +8,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 object Repositorio {
     private val service:Service
     init {
-        val retrofit = Retrofit.Builder() //biblioteca Retrofit para requisições HTTP
+        val retrofit = Retrofit.Builder() /** biblioteca Retrofit para requisições HTTP */
             .baseUrl("https://pokeapi.co/api/v2/")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
@@ -28,4 +28,5 @@ object Repositorio {
         return call.execute().body()
 
     }
+
 }
