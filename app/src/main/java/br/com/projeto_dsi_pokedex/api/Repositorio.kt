@@ -4,10 +4,10 @@ import br.com.projeto_dsi_pokedex.api.model.PokemonApiResultado
 import br.com.projeto_dsi_pokedex.api.model.ResultadoApi
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-
+// Para impedir que varios repository sejam construídos, transformanos em "object"
 object Repositorio {
     private val service:Service
-    init {
+    init { // função de inicialização
         val retrofit = Retrofit.Builder() //biblioteca Retrofit para requisições HTTP
             .baseUrl("https://pokeapi.co/api/v2/")
             .addConverterFactory(GsonConverterFactory.create())
