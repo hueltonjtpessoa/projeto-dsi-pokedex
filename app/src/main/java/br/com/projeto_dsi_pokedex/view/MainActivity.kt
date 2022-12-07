@@ -47,14 +47,14 @@ class MainActivity : AppCompatActivity() {
 
             val pokemons: List<Pokemon> = it.map {
 
-
+                //val numeroConvertido = pokemonsResultado.results.toString().replace("https://pokeapi.co/api/v2/pokemon/","").toInt();
                 Pokemon(it.imagemUrl,
-                    it.nome,
+                    it.name,
+                    it.url,
                     1,
                     listOf(TipoPokemon("Fire"))
                 )
             }
-
 
 
             val layoutManager = LinearLayoutManager(this)

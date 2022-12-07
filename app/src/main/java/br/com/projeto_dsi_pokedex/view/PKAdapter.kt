@@ -1,5 +1,6 @@
 package br.com.projeto_dsi_pokedex.view
 
+import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,6 +9,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import br.com.projeto_dsi_pokedex.R
 import br.com.projeto_dsi_pokedex.dados.Pokemon
+import com.bumptech.glide.Glide
 
 class PKAdapter(
     private val items: List<Pokemon>
@@ -37,20 +39,23 @@ class PKAdapter(
             val textViewTipo1 = findViewById<TextView>(R.id.textViewTipo1)
             val textViewTipo2 = findViewById<TextView>(R.id.textViewTipo2)
 
-            // TODO: Carregar imagem com o Glide
+            //Carregar imagem com o Glide
+            item?.let{
+                Glide.with(itemView.context).load(it.imagemUrl).into(imageViewPokemon)
 
-            textViewNumero.text = "Nº ${item.numeroFormatado}"
-            textViewNome.text = item.nome
+                //imageViewPokemon.setImageURI(Uri.parse("https://assets.pokemon.com/assets/cms2/img/pokedex/full/001.png"));
 
-            textViewTipo1.text = item.tipos!![0].nome
+                textViewNumero.text = "Nº ${item.numeroFormatado}"
+                textViewNome.text = item.name
+                textViewTipo1.text = item.tipos!![0].nome
 
-            if(item.tipos.size > 1){
-                textViewTipo2.visibility = View.VISIBLE
-                textViewTipo2.text = item.tipos[1].nome
-            }else {
-                textViewTipo2.visibility = View.GONE
-            }
-
+                if(item.tipos.size > 1){
+                    textViewTipo2.visibility = View.VISIBLE
+                    textViewTipo2.text = item.tipos[1].nome
+                }else {
+                    textViewTipo2.visibility = View.GONE
+                }
+        }
 
         }
     }
