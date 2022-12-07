@@ -12,7 +12,7 @@ object Repositorio {
             .baseUrl("https://pokeapi.co/api/v2/")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
-        service = retrofit.create(Service::class.java)
+        service = retrofit.create(Service::class.java) // vai pegar toda interface/métodos em service e vai criar todos eles/vai fazer a inplementação de todos eles.
     }
 
     fun listPokemons(limit: Int = 251): ResultadoApi? {
