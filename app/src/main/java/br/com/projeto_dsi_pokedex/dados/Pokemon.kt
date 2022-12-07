@@ -1,13 +1,13 @@
 package br.com.projeto_dsi_pokedex.dados
 
 data class Pokemon(
-    val imagemUrl: String?,
+    val number: Int,
     val name: String?,
-    val url: String?,
-    val numero: Int,
-    val tipos: List<TipoPokemon>?
+    val types: List<TipoPokemon>?
 
 ){
-    val numeroFormatado = numero.toString().padStart(3, '0')
+    val numeroFormatado = number.toString().padStart(3, '0')
+
+    val imagemUrl ="\"https://assets.pokemon.com/assets/cms2/img/pokedex/detail/$numeroFormatado.png\""
 }
 
