@@ -26,21 +26,21 @@ class MainActivity : AppCompatActivity() {
 
     private fun metodoPokemons() {
         val pokemonsResultado = Repositorio.listPokemons()
-
         pokemonsResultado?.results?.let {
-
-            val pokemons: List<Pokemon> = it.map {
-
-                //Remove a URL
-                val numeroConvertido = it.url.toString().replace("https://pokeapi.co/api/v2/pokemon/","")
-
-                Pokemon(it.imagemUrl,
-                    it.name,
-                    it.url,
-                    //Remove a Barra
-                    numeroConvertido.substring(0,numeroConvertido.length-1).toInt(),
-                    listOf(TipoPokemon("Fire"))
-                )
+            val pokemons: List<Pokemon> = it.map { resultado ->
+                val number = resultado.url
+                    .replace("https://pokeapi.co/api/v2/pokemon/","")
+                    .replace("/","").toInt()
+                val pokemonsResultado = Repositorio.getPokemon(number)
+                pokemonsResultado?.let {
+                    Pokemon(
+                        pokemonsResultado.id,
+                        pokemonsResultado.name,
+                        pokemonsResultado.types.map { type ->
+                            type.type
+                        }
+                    )
+                }!!
             }
 
 

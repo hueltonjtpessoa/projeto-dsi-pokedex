@@ -45,11 +45,11 @@ class PKAdapter(
 
                 textViewNumero.text = "Nº ${item.numeroFormatado}"
                 textViewNome.text = item.name
-                textViewTipo1.text = item.tipos!![0].nome
+                textViewTipo1.text = item.types!![0].name
 
-                if(item.tipos.size > 1){
+                if(item.types.size > 1){
                     textViewTipo2.visibility = View.VISIBLE
-                    textViewTipo2.text = item.tipos[1].nome
+                    textViewTipo2.text = item.types[1].name
                 }else {
                     textViewTipo2.visibility = View.GONE
                 }
