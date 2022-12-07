@@ -74,10 +74,10 @@ com dimensões do layout da tela-->
                 android:layout_width="135dp"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
-                android:background="#FD7D24"
+                android:background="#A4ACAF"
                 android:gravity="center_horizontal"
                 android:textAlignment="center"
-                android:textColor="#FFFFFF"
+                android:textColor="#212121"
                 android:textSize="12sp"
                 tools:text="Fogo" />
 
@@ -86,10 +86,10 @@ com dimensões do layout da tela-->
                 android:layout_width="135dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
-                android:background="#FD7D24"
+                android:background="#A4ACAF"
                 android:gravity="center_horizontal"
                 android:textAlignment="center"
-                android:textColor="#FFFFFF"
+                android:textColor="#212121"
                 android:textSize="12sp"
                 tools:text="Fogo" />
         </LinearLayout>
