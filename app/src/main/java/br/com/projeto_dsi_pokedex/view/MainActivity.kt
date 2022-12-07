@@ -2,32 +2,56 @@ package br.com.projeto_dsi_pokedex.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.constraintlayout.helper.widget.Carousel.Adapter
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import br.com.projeto_dsi_pokedex.R
+import br.com.projeto_dsi_pokedex.api.Repositorio
 import br.com.projeto_dsi_pokedex.dados.Pokemon
 import br.com.projeto_dsi_pokedex.dados.TipoPokemon
 
 class MainActivity : AppCompatActivity() {
+    lateinit var recyclerView: RecyclerView
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
+        recyclerView = findViewById(R.id.recyclerView)
 
-        val charmander = Pokemon(
-            "https://assets.pokemon.com/assets/cms2/img/pokedex/full/004.png",
-            "Charmander",
-            4,
-            listOf(
-                TipoPokemon("Fogo")
-            )
-        )
-        val pokemons = listOf(charmander, charmander, charmander, charmander, charmander)
+        Thread(Runnable {
+            metodoPokemons()
+        }).start()
 
-        val layoutManager = LinearLayoutManager(this)
-        recyclerView.layoutManager = layoutManager
-        recyclerView.adapter = PKAdapter(pokemons)
+    }
+
+    private fun metodoPokemons() {
+        val pokemonsResultado = Repositorio.listPokemons()
+
+        pokemonsResultado?.results?.let {
+
+            val pokemons: List<Pokemon> = it.map {
+
+                //Remove a URL
+                val numeroConvertido = it.url.toString().replace("https://pokeapi.co/api/v2/pokemon/","")
+
+                Pokemon(it.imagemUrl,
+                    it.name,
+                    it.url,
+                    //Remove a Barra
+                    numeroConvertido.substring(0,numeroConvertido.length-1).toInt(),
+                    listOf(TipoPokemon("Fire"))
+                )
+            }
+
+
+            val layoutManager = LinearLayoutManager(this)
+            recyclerView.post {
+                recyclerView.layoutManager = layoutManager
+                recyclerView.adapter = PKAdapter(pokemons)
+            }
+
+        }
+
+
     }
 }
