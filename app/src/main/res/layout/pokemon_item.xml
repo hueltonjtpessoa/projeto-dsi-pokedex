@@ -25,7 +25,6 @@
             android:layout_width="215dp"
             android:layout_height="215dp"
             android:layout_marginTop="8dp"
-            android:background="@drawable/charmander"
             android:contentDescription="Imagem de um Pokemon "
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

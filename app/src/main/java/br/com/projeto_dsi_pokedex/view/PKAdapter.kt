@@ -1,6 +1,5 @@
 package br.com.projeto_dsi_pokedex.view
 
-import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import br.com.projeto_dsi_pokedex.R
 import br.com.projeto_dsi_pokedex.dados.Pokemon
 import com.bumptech.glide.Glide
+
 
 class PKAdapter(
     private val items: List<Pokemon>
@@ -40,10 +40,8 @@ class PKAdapter(
             val textViewTipo2 = findViewById<TextView>(R.id.textViewTipo2)
 
             //Carregar imagem com o Glide
-            item?.let{
-                Glide.with(itemView.context).load(it.imagemUrl).into(imageViewPokemon)
-
-                //imageViewPokemon.setImageURI(Uri.parse("https://assets.pokemon.com/assets/cms2/img/pokedex/full/001.png"));
+            item.let{
+                Glide.with(itemView.context).load("https://assets.pokemon.com/assets/cms2/img/pokedex/detail/"+item.numeroFormatado+".png").into(imageViewPokemon)
 
                 textViewNumero.text = "Nº ${item.numeroFormatado}"
                 textViewNome.text = item.name

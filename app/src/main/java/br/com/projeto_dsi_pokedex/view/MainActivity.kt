@@ -2,8 +2,6 @@ package br.com.projeto_dsi_pokedex.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import androidx.constraintlayout.helper.widget.Carousel.Adapter
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import br.com.projeto_dsi_pokedex.R
@@ -20,23 +18,9 @@ class MainActivity : AppCompatActivity() {
 
         recyclerView = findViewById(R.id.recyclerView)
 
-        /*
-        val charmander = Pokemon(
-            "https://assets.pokemon.com/assets/cms2/img/pokedex/full/004.png",
-            "Charmander",
-            4,
-            listOf(
-                TipoPokemon("Fogo")
-            )
-        )
-
-        val pokemons = listOf(charmander, charmander, charmander, charmander, charmander)
-        */
-
         Thread(Runnable {
             metodoPokemons()
         }).start()
-
 
     }
 
@@ -47,11 +31,14 @@ class MainActivity : AppCompatActivity() {
 
             val pokemons: List<Pokemon> = it.map {
 
-                //val numeroConvertido = pokemonsResultado.results.toString().replace("https://pokeapi.co/api/v2/pokemon/","").toInt();
+                //Remove a URL
+                val numeroConvertido = it.url.toString().replace("https://pokeapi.co/api/v2/pokemon/","")
+
                 Pokemon(it.imagemUrl,
                     it.name,
                     it.url,
-                    1,
+                    //Remove a Barra
+                    numeroConvertido.substring(0,numeroConvertido.length-1).toInt(),
                     listOf(TipoPokemon("Fire"))
                 )
             }
