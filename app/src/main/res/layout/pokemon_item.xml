@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 
+
 <!--CardView, que funciona para exibição dos pokemons um abaixo do outro em lista,
 com dimensões do layout da tela-->
+
+
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
