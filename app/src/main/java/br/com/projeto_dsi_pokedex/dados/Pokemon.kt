@@ -1,5 +1,6 @@
 package br.com.projeto_dsi_pokedex.dados
 
+// Data class contendo os atributos do Pokemon
 data class Pokemon(
     val number: Int,
     val name: String?,
